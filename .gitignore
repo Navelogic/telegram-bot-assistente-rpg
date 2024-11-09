@@ -2,6 +2,7 @@
 *.class
 *.log
 *.ctxt
+*.env
 *.mtj.tmp/
 hs_err_pid*
 replay_pid*
