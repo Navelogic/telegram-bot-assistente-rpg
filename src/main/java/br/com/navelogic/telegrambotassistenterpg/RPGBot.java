@@ -45,9 +45,12 @@ public class RPGBot implements LongPollingSingleThreadUpdateConsumer {
     }
 
     private void mandarResultadoDados(Message message, ResultadoDados resultado) {
+        String userName = message.getFrom().getUserName();
+        String nomeExibido = (userName != null) ? "@" + userName : message.getFrom().getFirstName();
+
         String responseText = String.format(
-                "@%s rolou: \n%s = %d%s",
-                message.getFrom().getUserName(),
+                "%s rolou: \n%s = %d%s",
+                nomeExibido,
                 resultado.getRepresentacaoVisual(),
                 resultado.getTotal(),
                 resultado.getMensagemCritico() != null ? resultado.getMensagemCritico() : ""
@@ -67,9 +70,12 @@ public class RPGBot implements LongPollingSingleThreadUpdateConsumer {
     }
 
     private void mandarMensagemErro(Message message, String erro) {
+        String userName = message.getFrom().getUserName();
+        String nomeExibido = (userName != null) ? "@" + userName : message.getFrom().getFirstName();
+
         String responseText = String.format(
-                "@%s, aconteceu um erro interno...\n%s",
-                message.getFrom().getUserName(),
+                "%s, aconteceu um erro interno...\n%s",
+                nomeExibido,
                 erro
         );
 
