@@ -1,13 +1,14 @@
-package br.com.navelogic.telegrambotassistenterpg;
+package br.com.navelogic.telegrambotassistenterpg.Service;
 
+import br.com.navelogic.telegrambotassistenterpg.RPGBot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.longpolling.TelegramBotsLongPollingApplication;
 
 @Slf4j
-@Component
+@Service
 public class TelegramBotAssistenteRpgInitializer implements CommandLineRunner {
     private final String botToken;
     private final RPGBot rpgBot;
