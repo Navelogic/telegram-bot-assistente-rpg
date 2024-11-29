@@ -1,6 +1,6 @@
 package br.com.navelogic.telegrambotassistenterpg.Service;
 
-import br.com.navelogic.telegrambotassistenterpg.RPGBot;
+import br.com.navelogic.telegrambotassistenterpg.Controller.RPGBot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +13,7 @@ public class TelegramBotAssistenteRpgInitializer implements CommandLineRunner {
     private final String botToken;
     private final RPGBot rpgBot;
 
-    public TelegramBotAssistenteRpgInitializer (
+    public TelegramBotAssistenteRpgInitializer(
             @Value("${telegram.bot.token}") String botToken,
             RPGBot rpgBot) {
         this.botToken = botToken;
@@ -21,13 +21,13 @@ public class TelegramBotAssistenteRpgInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run (String... args) {
+    public void run(String... args) {
         try (TelegramBotsLongPollingApplication botsApplication = new TelegramBotsLongPollingApplication()) {
             botsApplication.registerBot(botToken, rpgBot);
-            System.out.println("RPGBot está rodando...");
+            log.info("RPGBot está rodando...");
             Thread.currentThread().join();
         } catch (Exception e) {
-            log.error("Erro ao iniciar o bot", e);
+            log.error("Erro ao iniciar o bot.", e);
         }
     }
 }
